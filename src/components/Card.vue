@@ -1,13 +1,24 @@
 <script>
 
-import { store } from '../store'
+import { store } from '../store';
+import CountryFlag from 'vue-country-flag-next'
+// import LangFlag from 'vue-lang-code-flags';
 
 export default {
+    components: {
+        CountryFlag,
+        // LangFlag,
+    },
     data() {
         return {
             store: store,
         }
+    },
+   methods: {
+    setFlag() {
+      
     }
+   }
    
 }
 </script>
@@ -17,7 +28,7 @@ export default {
         <div class="card-info">
             <p>Titolo: {{ movie.title }}</p>
             <p>Titolo originale: {{ movie.original_title }}</p>
-            <p>Lingua: {{ movie.original_language }}</p>
+            <p>Lingua: <country-flag :country='movie.original_language' size='normal'/></p>
             <p>Voto: {{ movie.vote_average }}</p>
         </div>
     </div>
