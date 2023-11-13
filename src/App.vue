@@ -37,6 +37,26 @@ export default {
           this.store.movies = res.data.results;
           this.store.movies = store.movies;
         })
+      },
+      searchSeries() {
+        if(this.store.searchedText === '') {
+          store.movies = []
+          store.series = []
+          return
+        }
+
+        axios.get('https://api.themoviedb.org/3/search/tv', {
+          params: {
+            api_key: this.store.API_KEY,
+            query: this.store.searchedText,
+            language: 'it-IT'
+          }
+        })
+        .then(res=> {
+          console.log(res.data.results);
+          this.store.series = res.data.results;
+          this.store.series = store.series;
+        })
       }
     }
 }
@@ -45,7 +65,7 @@ export default {
 </script>
 
 <template>
-    <Header @searchMovies="searchMovies"/>
+    <Header @searchMovies="searchMovies" @searchSeries="searchSeries" />
     <MainContent />
 </template>
 
