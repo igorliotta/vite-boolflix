@@ -35,9 +35,11 @@ export default {
 <template>
     <header class="header">
        <div class="container">
-        <p>Logo</p>
+        <figure class="logo">
+            <img src="boolflix-logo.png" alt="">
+        </figure>
         <div>
-            <input type="text" placeholder="Cerca il contenuto" v-model.trim="store.searchedText"  @keyup.enter="$emit('searchMovies'), $emit('searchSeries')" >
+            <input type="text" placeholder="Cerca il contenuto" class="search-bar" v-model.trim="store.searchedText"  @keyup.enter="$emit('searchMovies'), $emit('searchSeries')" >
             <button @click="$emit('searchMovies')" class="button">Search</button>
         </div>
        </div>
@@ -46,17 +48,31 @@ export default {
 
 <style lang="scss" scoped>
 .header {
-    width: 900px;
-    padding: 5px;
-    border: 1px solid black;
+    width: 1200px;
+    padding: 4px 25px;
+    background-color: black;
     margin: 0 auto;
 
     .container {
         margin: 0 auto;
-        border: 1px solid red;
         padding: 5px 0;
         display: flex;
         justify-content: space-between;
+        align-items: center;
+
+        .logo {
+            width: 250px;
+        }
+    }
+
+    .search-bar {
+        width: 250px;
+        height: 30px;
+    }
+
+    .button {
+        padding: 5px;
+        height: 30px;
     }
 
 }
