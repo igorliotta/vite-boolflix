@@ -16,18 +16,18 @@ export default {
             this.currentText = store.searchedText;
             console.log('Testo mandato', store.searchedText)
         },
-        searchMovies() {
-        axios.get('https://api.themoviedb.org/3/search/movie', {
-          params: {
-            api_key: this.store.API_KEY,
-            query: this.store.searchedText,
-          }
-        })
-        .then(res=> {
-          console.log(res.data.results);
-          this.store.movies = res.data.results;
-        })
-      }
+    //     searchMovies() {
+    //     axios.get('https://api.themoviedb.org/3/search/movie', {
+    //       params: {
+    //         api_key: this.store.API_KEY,
+    //         query: this.store.searchedText,
+    //       }
+    //     })
+    //     .then(res=> {
+    //       console.log(res.data.results);
+    //       this.store.movies = res.data.results;
+    //     })
+    //   }
     }
 }
 </script>
@@ -37,8 +37,8 @@ export default {
        <div class="container">
         <p>Logo</p>
         <div>
-            <input type="text" placeholder="Cerca il contenuto" v-model="store.searchedText"  @keyup.enter="searchMovies()">
-            <button @click="searchMovies()" class="button">Search</button>
+            <input type="text" placeholder="Cerca il contenuto" v-model.trim="store.searchedText"  @keyup.enter="$emit('searchMovies')">
+            <button @click="$emit('searchMovies')" class="button">Search</button>
         </div>
        </div>
     </header>

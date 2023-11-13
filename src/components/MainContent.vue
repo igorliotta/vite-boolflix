@@ -19,7 +19,10 @@ export default {
 <main class="main-content">
     <div class="container">
         <div class="row">
-            <Card />
+            <Card v-for="movie in store.movies" :key="movie.id" :item="movie" />
+        </div>
+        <div v-if="!store.movies.length">
+            Nessun film da mostrare!
         </div>
     </div>
 </main>
@@ -30,7 +33,7 @@ export default {
     width: 900px;
     border: 1px solid black;
     margin: 0 auto;
-    padding: 10px 0;
+    padding: 10px;
 
     .row {
         display: flex;
