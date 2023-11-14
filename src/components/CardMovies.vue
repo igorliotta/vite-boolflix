@@ -18,6 +18,10 @@ export default {
         item: {
             type: Object,
             required: true,
+        },
+        cardType: {
+            type: String,
+            required: true,
         }
     },
     methods: {
@@ -31,8 +35,13 @@ export default {
 <template>
     <div class="card">
         <ul class="card-info">
-            <li><span class="weight">Titolo:</span> {{ item.title }}</li>
-            <li><span class="weight">Titolo originale:</span> {{ item.original_title }}</li>
+            <li v-if="item.title === item.original_title">
+                <li><span class="weight">Titolo:</span> {{ item.title }}</li>
+            </li>
+            <li v-else>
+                <li><span class="weight">Titolo:</span> {{ item.title }}</li>
+                <li><span class="weight">Titolo originale:</span> {{ item.original_title }}</li>
+            </li>
             <li><span class="weight">Lingua:</span> {{ item.original_language }} <country-flag :country='item.original_language' size='normal'/></li>
             <li><span class="weight">Voto:</span> {{ parseInt(item.vote_average / 2) }} <font-awesome-icon v-for="n in parseInt(item.vote_average / 2)" :key="n" icon="fa-solid fa-star" size="xs" style="color: #ffb43f;" /></li>
             <li class="overview"><span class="weight">Overview:</span> <span class="size">{{ item.overview }}</span></li>

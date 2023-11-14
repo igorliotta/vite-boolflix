@@ -62,6 +62,7 @@ export default {
 
         .logo {
             width: 250px;
+            padding: 10px;
         }
     }
 

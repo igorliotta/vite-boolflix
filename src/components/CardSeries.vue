@@ -19,20 +19,28 @@ export default {
         }
     },
     methods: {
-      setFlag() {
-      
+        setFlag() {
+
+        }
     }
-   }
 }
 </script>
 
 <template>
     <div class="card">
         <ul class="card-info">
+            <li v-if="item.name === item.original_name">
+            <li><span class="weight">Titolo:</span> {{ item.name }}</li>
+            </li>
+            <li v-else>
             <li><span class="weight">Titolo:</span> {{ item.name }}</li>
             <li><span class="weight">Titolo originale:</span> {{ item.original_name }}</li>
-            <li><span class="weight">Lingua:</span> {{ item.original_language }} <country-flag :country='item.original_language' size='normal'/></li>
-            <li><span class="weight">Voto:</span> {{ parseInt(item.vote_average / 2) }} <font-awesome-icon v-for="n in parseInt(item.vote_average / 2)" :key="n" icon="fa-solid fa-star" size="xs" style="color: #ffb43f;" /></li>
+            </li>
+            <li><span class="weight">Lingua:</span> {{ item.original_language }} <country-flag
+                    :country='item.original_language' size='normal' /></li>
+            <li><span class="weight">Voto:</span> {{ parseInt(item.vote_average / 2) }} <font-awesome-icon
+                    v-for="n in parseInt(item.vote_average / 2)" :key="n" icon="fa-solid fa-star" size="xs"
+                    style="color: #ffb43f;" /></li>
             <li class="overview"><span class="weight">Overview:</span> <span class="size">{{ item.overview }}</span></li>
         </ul>
         <figure>
@@ -65,18 +73,19 @@ export default {
             font-weight: 700;
             text-decoration: underline;
         }
+
         .size {
             font-size: 11px;
         }
     }
- .img {
-    border: 2px solid white;
- }
+
+    .img {
+        border: 2px solid white;
+    }
 }
 
 .card:hover {
     .card-info {
         display: block;
     }
-}
-</style>
+}</style>

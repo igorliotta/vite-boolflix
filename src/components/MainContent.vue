@@ -24,7 +24,7 @@ export default {
                 <div class="movies-list">
                     <h2>Film trovati:</h2>
                 </div>
-                <CardMovies v-for="movie in store.movies" :key="movie.id" :item="movie" />
+                <CardMovies v-for="movie in store.movies" :key="movie.id" :item="movie" :card-type="'MOVIE'" />
                 <div v-if="!store.movies.length" class="movies-list-title">
                     Nessun film da mostrare!
                 </div>
